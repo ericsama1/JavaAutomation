@@ -8,20 +8,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.logging.Logger;
-import pageFactory.AbstractPageObject;
+//import pageFactory.AbstractPageObject;
+import pages.Header;
 
-public class Home extends AbstractPageObject{
+public class Home extends Header{
 
 	public Home(WebDriver driver, WebDriverWait driverWait, Logger log) {
 		super(driver, driverWait, log);
 	}
 
-	private By byMenuButton = By.xpath("//button[text()='Open Menu']");
 	private By bySelectSort = By.className("product_sort_container");
 	private By byProducts = By.className("inventory_item");
 	private By byAddToCart = By.xpath("//button[text()='ADD TO CART']");
 	
-	private WebElement menuButton = driver.findElement(byMenuButton);
 	private Select selectSort = new Select(driver.findElement(bySelectSort));
 	private List<WebElement> products = driver.findElements(byProducts);
 	
@@ -33,6 +32,9 @@ public class Home extends AbstractPageObject{
 		WebElement product = products.get(position);
 		WebElement add = product.findElement(byAddToCart);
 		add.click();
+		log.info(String.format(
+				"Se ingresa al carrito, el elemento que se encuentra en la posicion %d",
+				position));
 	}
 	
 	/**
