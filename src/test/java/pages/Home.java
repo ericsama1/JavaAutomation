@@ -13,14 +13,15 @@ import pages.Header;
 
 public class Home extends Header{
 
-	public Home(WebDriver driver, WebDriverWait driverWait, Logger log) {
-		super(driver, driverWait, log);
+	public Home(WebDriver driver, WebDriverWait driverWait, Logger log, String folder) {
+		super(driver, driverWait, log, folder);
 	}
 
 	private By bySelectSort = By.className("product_sort_container");
 	private By byProducts = By.className("inventory_item");
 	private By byAddToCart = By.xpath("//button[text()='ADD TO CART']");
 	
+//	private WebElement 
 	private Select selectSort = new Select(driver.findElement(bySelectSort));
 	private List<WebElement> products = driver.findElements(byProducts);
 	

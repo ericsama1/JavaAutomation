@@ -14,8 +14,8 @@ import org.openqa.selenium.By;
 
 public class Header extends AbstractPageObject{
 
-	public Header(WebDriver driver, WebDriverWait driverWait, Logger log) {
-		super(driver, driverWait, log);
+	public Header(WebDriver driver, WebDriverWait driverWait, Logger log, String folder) {
+		super(driver, driverWait, log, folder);
 	}
 	
 	private By byMenuButton = By.xpath("//button[text()='Open Menu']");

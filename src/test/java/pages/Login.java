@@ -4,33 +4,40 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.logging.Logger;
 import pageFactory.AbstractPageObject;
 
 
+
 public class Login extends AbstractPageObject {
 
-	public Login(WebDriver driver, WebDriverWait driverWait, Logger log) {
-		super(driver, driverWait, log);
+	public Login(WebDriver driver, WebDriverWait driverWait, Logger log, String folder) {
+		super(driver, driverWait, log, folder);
 	}
 	
 	private By byUserInput = By.id("user-name");
 	private By byPasswordInput = By.id("password");
-	private By byLoginButton = By.xpath("//input[@value='LOGIN']");
+	private By byLoginButton = By.className("btn_action");
 	private By byMessage = By.xpath("//h3[@data-test='error']");
 	
-	private WebElement userInput = driver.findElement(byUserInput);
-	private WebElement passwordInput = driver.findElement(byPasswordInput);
-	private WebElement loginButton = driver.findElement(byLoginButton);	
+	private WebElement userInput = driverWait.until(ExpectedConditions.
+			visibilityOfElementLocated(byUserInput));
+	private WebElement passwordInput = driverWait.until(ExpectedConditions.
+			visibilityOfElementLocated(byPasswordInput));
+	private WebElement loginButton = driverWait.until(ExpectedConditions.
+			visibilityOfElementLocated(byLoginButton));	
 	
 	/**
 	 * Metodo para escribir el usuario en el input de usuario.
 	 * @param user Nombre del usuario.
 	 */
 	public void writeUser(String user) {
+		scroll_to(driver, userInput);
 		userInput.clear();
 		userInput.sendKeys(user);
 		log.info(String.format("Se ingresa el usuario %s", user));
+		takeScreenshot(driver);
 	}
 	
 	/**
@@ -41,6 +48,7 @@ public class Login extends AbstractPageObject {
 		passwordInput.clear();
 		passwordInput.sendKeys(password);
 		log.info(String.format("Se ingresa la contraseña del usuario"));
+		takeScreenshot(driver);
 	}
 	
 	/**
@@ -72,6 +80,7 @@ public class Login extends AbstractPageObject {
 		assert text.equals(exceptedMessage): String.format("Mensaje esperado: %s, Mensaje obtenido: %s", 
 															exceptedMessage, text);
 		log.info(String.format("El mensaje de usuario bloqueado es el correcto"));
+		takeScreenshot(driver);
 	}
 	
 }
