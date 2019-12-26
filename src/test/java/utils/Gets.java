@@ -20,4 +20,10 @@ public class Gets {
 	public String get_current_timestamp() {
 		return String.format("%s_%s", get_current_date(), get_current_time());
 	}
+	
+	public String obtener_dia(int days) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDateTime now = LocalDateTime.now();
+		return formatter.format(now.plusDays(days));
+	}
 }
