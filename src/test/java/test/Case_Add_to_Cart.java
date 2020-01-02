@@ -1,6 +1,7 @@
 package test;
 
 import org.junit.Test;
+import org.apache.log4j.Category;
 import org.junit.After;
 import data.LoginData;
 
@@ -21,8 +22,7 @@ public class Case_Add_to_Cart extends BaseTest {
 	@Test
 	public void add_an_item() {
 		String folder = create_folder(get_name());
-		Login loginPage = new Login(driver, driverWait, log, folder);
-		loginPage.login(data.get_user(), data.get_password());
+		login(folder);
 		Home homepage = new Home(driver, driverWait, log, folder);
 		homepage.add_item_to_cart(1);
 	}
@@ -30,15 +30,22 @@ public class Case_Add_to_Cart extends BaseTest {
 	@Test
 	public void add_all_items() {
 		String folder = create_folder(get_name());
-		Login loginPage = new Login(driver, driverWait, log, folder);
-		loginPage.login(data.get_user(), data.get_password());
+		login(folder);
 		Home homepage = new Home(driver, driverWait, log, folder);
 		homepage.add_all_item_to_cart();
 	}
 	
+	private void login(String folder) {
+		Login loginPage = new Login(driver, driverWait, log, folder);
+		loginPage.login(data.get_user(), data.get_password());
+	}
+
+	@SuppressWarnings("deprecation")
 	@After
 	public void tearDown() {
 		Case_Login.driver.close();
+		Category.shutdown();
 	}
+	
 	
 }

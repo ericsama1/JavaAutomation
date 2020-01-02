@@ -55,7 +55,7 @@ public class BaseTest {
 	
 
 	/**
-	 * Metodo privado para generar el log
+	 * Private method to initialize the logger
 	 */
 	private static void create_log(String evidence_path){
 		PatternLayout layout = new PatternLayout();
@@ -64,12 +64,21 @@ public class BaseTest {
 		create_log_console(layout);
 	}
 	
+	/**
+	 * Method to setup the console log
+	 * @param layout PatternLayout with the format to write in the log
+	 */
 	private static void create_log_console(PatternLayout layout) {
 		ConsoleAppender console_appender;
 		console_appender = new ConsoleAppender(layout);
 		log.addAppender(console_appender);
 	}
 	
+	/**
+	 * Method to create a log file in the evidence folder
+	 * @param layout PatternLayout with the format to write in the log
+	 * @param evidence_path Evidente folder path
+	 */
 	private static void create_log_file(PatternLayout layout, String evidence_path) {
 		String EXTENSION = ".log";
 		String log_name = "prueba";
@@ -85,14 +94,19 @@ public class BaseTest {
 	}
 	
 	/**
-	 * Metodo para obtener el nombre del metodo ejecutado
-	 * @return Nombre del metodo 
+	 * Method to obtain the test class's name
+	 * @return test class's name 
 	 */
 	public static String get_name() {
 		String name = Thread.currentThread().getStackTrace()[2].getMethodName();
 		return name;
 	}
 	
+	/**
+	 * Method to setup and create the evidence folder
+	 * @param folder_name Folder's name
+	 * @return full path of the evidence folder
+	 */
 	public static String create_folder(String folder_name) {
 		String evidence_path = String.format(
 			 "%s%s/%s/%s/", 

@@ -32,6 +32,7 @@ public class AbstractPageObject {
 		this.log = log;
 		this.folder = folder;
 		PageFactory.initElements(driver, this);
+		takeScreenshot(driver);
 	}
 	
 	//----------------- TIEMPO DE ESPERA -------------------//
@@ -45,21 +46,20 @@ public class AbstractPageObject {
 	}
 	
 	/**
-	 * Metodo para realizar un screenshot y guardarlo en la carpeta definida
-	 * @param driver Driver del navegador
-	 * @param path Path de la carpeta en donde se guarda las imagines
+	 * Method to take a screenshot and save in the evidence folder
+	 * @param driver browser's driver
 	 */
 	public void takeScreenshot(WebDriver driver) {
-		// Se realiza la captura de pantalla
+		// Take a screenshot
 		TakesScreenshot screen = ((TakesScreenshot)driver);
-		// Se guarda en una variable la iamgen
+		// Create a file variable with the screenshot
 		File screenfile = screen.getScreenshotAs(OutputType.FILE);
-		// Se crea el string de la ubicacion que se va a guradar la imagen
+		// Create the string where we save the screenshot, with the assigned name
 		String file_name = String.format("%s%s.png", folder, gets.get_current_time());
-		// Se crea un archivo vacio en la ubicacion
+		// Create the empty file where we save the file
 		File destFile = new File(file_name);
 		try {
-			// Se intenta copiar la imagen guardada en memoria a un archivo en el disco
+			// try to copy the screenshot file to the empty file
 			FileUtils.copyFile(screenfile, destFile);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -69,7 +69,7 @@ public class AbstractPageObject {
 	
 	
 	/**
-	 * Metodo para realizar un scroll hacia un elemento de la pagina
+	 * Method to scrool to an element in the browser
 	 * @param driver Driver del navegador 
 	 * @param element Elemento ubicado en el DOM de la pagina
 	 */

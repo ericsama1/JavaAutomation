@@ -26,6 +26,7 @@ public class Case_Login extends BaseTest {
 		loginPage.login(data.get_user(), data.get_password());
 		log.info("Se finaliza el test de login");
 		loginPage.takeScreenshot(driver);
+		log.error("prueba");
 	}
 	
 	/**
