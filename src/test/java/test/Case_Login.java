@@ -1,7 +1,7 @@
 package test;
 
 import org.junit.Test;
-
+import org.apache.log4j.Category;
 import org.junit.After;
 import data.LoginData;
 
@@ -54,9 +54,11 @@ public class Case_Login extends BaseTest {
 		log.info("Se finaliza el test de contraseña incorrecta");
 	}
 	
+	@SuppressWarnings("deprecation")
 	@After
 	public void tearDown() {
 		Case_Login.driver.close();
+		Category.shutdown();
 	}
 	
 }
