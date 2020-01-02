@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.JavascriptExecutor;
-import java.util.logging.Logger;
+import org.apache.log4j.Logger;
 
 import utils.Gets;
 

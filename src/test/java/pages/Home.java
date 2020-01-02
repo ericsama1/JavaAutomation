@@ -7,8 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import java.util.logging.Logger;
-//import pageFactory.AbstractPageObject;
+import org.apache.log4j.Logger;
 import pages.Header;
 
 public class Home extends Header{
