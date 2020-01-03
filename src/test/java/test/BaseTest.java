@@ -28,7 +28,7 @@ public class BaseTest {
 	public static WebDriverWait driverWait;
 	
 	public static Logger log = Logger.getLogger(Logger.class.getName());
-	private static String log_format = "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n";
+	private static final String LOGFORMAT= "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n";
 	private static Actions action = new Actions();
 	private static Gets get = new Gets();
 	
@@ -59,7 +59,7 @@ public class BaseTest {
 	 */
 	private static void create_log(String evidence_path){
 		PatternLayout layout = new PatternLayout();
-		layout.setConversionPattern(log_format);
+		layout.setConversionPattern(LOGFORMAT);
 		create_log_file(layout, evidence_path);
 		create_log_console(layout);
 	}

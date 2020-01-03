@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 public class Gets {
 
-	String timeFormat = "HHmmss";
-	String dateFormat = "yyyyMMdd";
+	private static final String TIMEFORMAT = "HHmmss";
+	private static final String DATEFORMAT = "yyyyMMdd";
 	
 	
 	/**
@@ -14,7 +14,7 @@ public class Gets {
 	 * @return String with the current time
 	 */
 	public String get_current_time() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(timeFormat);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(TIMEFORMAT);
 		LocalDateTime now = LocalDateTime.now();
 		return formatter.format(now);
 	}
@@ -24,14 +24,14 @@ public class Gets {
 	 * @return String with the current date
 	 */
 	public String get_current_date() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATEFORMAT);
 		LocalDateTime now = LocalDateTime.now();
 		return formatter.format(now);
 	}
 	
 	/**
 	 * Method to create a String with the current date and time
-	 * @return String with the currente date and time
+	 * @return String with the current date and time
 	 */
 	public String get_current_timestamp() {
 		return String.format("%s_%s", get_current_date(), get_current_time());
