@@ -6,15 +6,23 @@ import java.util.Properties;
 
 public class SetProperties {
 	private static Properties props = new Properties();
+	
+	private static String config = "config";
+	private static String EXTENSION = ".properties";
+	
+	private static String currentPath = "user.dir";
 
 	public SetProperties() {
 		readProperties();
 	}
 	
+	/**
+	 * Method to read the properties file, and set this properties to project
+	 */
 	private void readProperties() {
-		String propFileName = "config.properties";
-		File ruta = new File(System.getProperty("user.dir"));
-		File file = new File(ruta, propFileName);
+		String propFileName = fullName(config);
+		File path = new File(System.getProperty(currentPath));
+		File file = new File(path, propFileName);
 		
 		try {
 			props.load(new FileInputStream(file));
@@ -23,8 +31,17 @@ public class SetProperties {
 		}
 	}
 	
+	/**
+	 * Method to get a specific properties
+	 * @param key Name of the properties to get
+	 * @return Value of the propertie
+	 */
 	public String getProperty(String key) {
 		return (String) props.get(key);
+	}
+	
+	private String fullName(String name) {
+		return name + EXTENSION;
 	}
 
 }

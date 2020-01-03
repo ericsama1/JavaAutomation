@@ -69,9 +69,9 @@ public class AbstractPageObject {
 	
 	
 	/**
-	 * Method to scrool to an element in the browser
-	 * @param driver Driver del navegador 
-	 * @param element Elemento ubicado en el DOM de la pagina
+	 * Method to scroll to an element in the browser
+	 * @param driver browser's driver 
+	 * @param element Webelement from the webpage
 	 */
 	public static void scroll_to(WebDriver driver, WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor)driver;

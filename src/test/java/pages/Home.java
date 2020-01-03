@@ -55,7 +55,7 @@ public class Home extends Header{
 	
 	/**
 	 * Method to click on the product's name
-	 * @param position
+	 * @param position position of the product to click
 	 */
 	public void click_product_name(int position) {
 		WebElement product = products.get(position);
