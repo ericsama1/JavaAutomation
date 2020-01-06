@@ -18,6 +18,7 @@ public class Cart extends Header{
 	
 	private By byCartItem = By.className("cart_item");
 	private By byItemQuantity = By.className("cart_quantity");
+	private By byItemName = By.className("inventory_item_name");
 	private By byItemDescription = By.className("inventory_item_desc");
 	private By byItemRemove = By.className("btn_secondary cart_button");
 	private By byItemLink = By.xpath("//a");
@@ -38,8 +39,12 @@ public class Cart extends Header{
 	 */
 	public void removeItem(int position) {
 		WebElement element = items.get(position);
+		String name = element.findElement(byItemName).getText();
 		WebElement remove = element.findElement(byItemRemove);
 		remove.click();
+		log.info(String.format("Se quita el elemento %s de la lista", name));
+		// Take a screenshot after remove an item from the list
+		takeScreenshot(driver);
 		// Update the list of the element after remove an element
 		items = driver.findElements(byCartItem);
 	}
@@ -50,8 +55,10 @@ public class Cart extends Header{
 	 */
 	public void clickItem(int position) {
 		WebElement element = items.get(position);
+		String name = element.findElement(byItemName).getText();
 		WebElement link = element.findElement(byItemLink);
 		link.click();
+		log.info(String.format("Se hace un click sobre el elemento %s", name));
 	}
 	
 	/**
@@ -59,6 +66,7 @@ public class Cart extends Header{
 	 */
 	public void clickContinue() {
 		continueShopping.click();
+		log.info("Se hace click sobre el botón 'Continue Shopping'");
 	}
 	
 	/**
@@ -66,6 +74,7 @@ public class Cart extends Header{
 	 */
 	public void clickCheckout() {
 		checkoutButton.click();
+		log.info("Se hace click sobre el botón 'Checkout'");
 	}
 	
 	// Gets
@@ -88,5 +97,13 @@ public class Cart extends Header{
 	public String getDesciption(int position) {
 		WebElement element = items.get(position);
 		return element.findElement(byItemDescription).getText();
+	}
+	
+	/**
+	 * Method to get the quantity of the element in the cart's list
+	 * @return list size
+	 */
+	public int getListQuantity() {
+		return items.size();
 	}
 }
