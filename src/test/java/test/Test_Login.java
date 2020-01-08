@@ -9,10 +9,10 @@ import pages.Login;
 import pages.Home;
 
 
-public class Case_Login extends BaseTest {
+public class Test_Login extends BaseTest {
 	LoginData data = new LoginData();
 	
-	public Case_Login() {
+	public Test_Login() {
 		super.setup();
 	}
 	
@@ -59,7 +59,7 @@ public class Case_Login extends BaseTest {
 	@SuppressWarnings("deprecation")
 	@After
 	public void tearDown() {
-		Case_Login.driver.close();
+		Test_Login.driver.close();
 		Category.shutdown();
 	}
 	
