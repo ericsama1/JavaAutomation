@@ -2,6 +2,7 @@ package pageFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -26,11 +27,11 @@ public class AbstractPageObject {
 	private Gets gets = new Gets();
 
 
-	public AbstractPageObject(WebDriver driver, WebDriverWait driverWait, Logger log, String folder){
+	public AbstractPageObject(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings){
 		this.driver = driver;
 		this.driverWait = driverWait;
-		this.log = log;
-		this.folder = folder;
+		this.log = (Logger)settings.get("log");
+		this.folder = (String)settings.get("folder");
 		PageFactory.initElements(driver, this);
 		takeScreenshot(driver);
 	}

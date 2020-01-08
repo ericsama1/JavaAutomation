@@ -1,6 +1,7 @@
 package test;
 
 import java.util.concurrent.TimeUnit;
+import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,8 +22,8 @@ import utils.Gets;
 
 public class BaseTest {
 
-	public static final String WEB_DRIVER_PATH = "lib\\chromedriver.exe";
-	public static final String WEB_DRIVER_CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
+//	public static final String WEB_DRIVER_PATH = "lib\\chromedriver.exe";
+//	public static final String WEB_DRIVER_CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
 	
 	public static WebDriver driver;
 	public static WebDriverWait driverWait;
@@ -31,6 +32,8 @@ public class BaseTest {
 	private static final String LOGFORMAT= "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n";
 	private static Actions action = new Actions();
 	private static Gets get = new Gets();
+	
+	public static HashMap<String, Object> settings = new HashMap<String, Object>();
 	
 	private static SetProperties properties = new SetProperties();
 	
@@ -51,8 +54,22 @@ public class BaseTest {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driverWait = new WebDriverWait(driver, 10);
+		settingScreenshot();
 	}
 	
+	/**
+	 * Method to set if you want to take screenshot or not
+	 */
+	private static void settingScreenshot() {
+		String getScreenshot = properties.getProperty("screenshot");
+		boolean screenshot;
+		if (getScreenshot.equals("true")) {
+			screenshot = true;
+		} else {
+			screenshot = false;
+		}
+		settings.put("screenshot", screenshot);		
+	}
 
 	/**
 	 * Private method to initialize the logger
@@ -62,6 +79,7 @@ public class BaseTest {
 		layout.setConversionPattern(LOGFORMAT);
 		create_log_file(layout, evidence_path);
 		create_log_console(layout);
+		settings.put("log", log);
 	}
 	
 	/**
@@ -107,7 +125,7 @@ public class BaseTest {
 	 * @param folder_name Folder's name
 	 * @return full path of the evidence folder
 	 */
-	public static String create_folder(String folder_name) {
+	public static void create_folder(String folder_name) {
 		String evidence_path = String.format(
 			 "%s%s/%s/%s/", 
 			 properties.getProperty("evidence"),
@@ -117,7 +135,8 @@ public class BaseTest {
 		);
 		action.createFolder(evidence_path);
 		create_log(evidence_path);
-		return evidence_path;
+//		return evidence_path;
+		settings.put("folder", evidence_path);
 	}
 }
 

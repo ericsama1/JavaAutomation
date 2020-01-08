@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.HashMap;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,13 +10,12 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
-import org.apache.log4j.Logger;
 import pages.Header;
 
 public class Home extends Header{
 
-	public Home(WebDriver driver, WebDriverWait driverWait, Logger log, String folder) {
-		super(driver, driverWait, log, folder);
+	public Home(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
+		super(driver, driverWait, settings);
 	}
 
 	private By bySelectSort = By.className("product_sort_container");

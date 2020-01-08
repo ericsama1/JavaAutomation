@@ -1,17 +1,17 @@
 package pages;
 
+import java.util.HashMap;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.apache.log4j.Logger;
 import pageFactory.AbstractPageObject;
 
 public class Header extends AbstractPageObject{
 
-	public Header(WebDriver driver, WebDriverWait driverWait, Logger log, String folder) {
-		super(driver, driverWait, log, folder);
+	public Header(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
+		super(driver, driverWait, settings);
 	}
 	
 	private By byMenuButton = By.xpath("//button[text()='Open Menu']");

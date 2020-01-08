@@ -1,17 +1,18 @@
 package pages;
 
+import java.util.HashMap;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.apache.log4j.Logger;
 import pages.Header;
 
 public class Checkout extends Header {
 
-	public Checkout(WebDriver driver, WebDriverWait driverWait, Logger log, String folder) {
-		super(driver, driverWait, log, folder);
+	public Checkout(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
+		super(driver, driverWait, settings);
 	}
 	
 	private By byFirstName = By.id("first-name");
