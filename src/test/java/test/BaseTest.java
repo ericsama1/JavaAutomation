@@ -99,7 +99,7 @@ public class BaseTest {
 	 */
 	private static void create_log_file(PatternLayout layout, String evidence_path) {
 		String EXTENSION = ".log";
-		String log_name = "prueba";
+		String log_name = "logger";
 		String full_name = log_name + EXTENSION;
 		FileAppender file_appender;
 		try {
@@ -135,7 +135,6 @@ public class BaseTest {
 		);
 		action.createFolder(evidence_path);
 		create_log(evidence_path);
-//		return evidence_path;
 		settings.put("folder", evidence_path);
 	}
 }

@@ -23,6 +23,7 @@ public class AbstractPageObject {
 	protected WebDriverWait driverWait;
 	protected Logger log;
 	protected String folder;
+	private boolean screenshot;
 	private static String SCROLL_SCRIPT = "arguments[0].scrollIntoView({block:'center'});"; 
 	private Gets gets = new Gets();
 
@@ -30,8 +31,9 @@ public class AbstractPageObject {
 	public AbstractPageObject(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings){
 		this.driver = driver;
 		this.driverWait = driverWait;
-		this.log = (Logger)settings.get("log");
-		this.folder = (String)settings.get("folder");
+		this.log = (Logger) settings.get("log");
+		this.folder = (String) settings.get("folder");
+		this.screenshot = (Boolean) settings.get("screenshot");
 		PageFactory.initElements(driver, this);
 		takeScreenshot(driver);
 	}
@@ -51,21 +53,25 @@ public class AbstractPageObject {
 	 * @param driver browser's driver
 	 */
 	public void takeScreenshot(WebDriver driver) {
-		// Take a screenshot
-		TakesScreenshot screen = ((TakesScreenshot)driver);
-		// Create a file variable with the screenshot
-		File screenfile = screen.getScreenshotAs(OutputType.FILE);
-		// Create the string where we save the screenshot, with the assigned name
-		String file_name = String.format("%s%s.png", folder, gets.get_current_time());
-		// Create the empty file where we save the file
-		File destFile = new File(file_name);
-		try {
-			// try to copy the screenshot file to the empty file
-			FileUtils.copyFile(screenfile, destFile);
-		} catch (IOException e) {
-			e.printStackTrace();
+		if (screenshot) {
+			// Take a screenshot
+			TakesScreenshot screen = ((TakesScreenshot)driver);
+			// Create a file variable with the screenshot
+			File screenfile = screen.getScreenshotAs(OutputType.FILE);
+			// Create the string where we save the screenshot, with the assigned name
+			String file_name = String.format("%s%s.png", folder, gets.get_current_time());
+			// Create the empty file where we save the file
+			File destFile = new File(file_name);
+			try {
+				// try to copy the screenshot file to the empty file
+				FileUtils.copyFile(screenfile, destFile);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			sleep(1);
+		} else {
+			log.warn("No está habilitado la opción de la captura de pantalla");
 		}
-		sleep(1);
 	}
 	
 	

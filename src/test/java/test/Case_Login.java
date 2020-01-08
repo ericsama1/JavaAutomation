@@ -6,6 +6,7 @@ import org.junit.After;
 import data.LoginData;
 
 import pages.Login;
+import pages.Home;
 
 
 public class Case_Login extends BaseTest {
@@ -25,8 +26,7 @@ public class Case_Login extends BaseTest {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
 		log.info("Se finaliza el test de login");
-		loginPage.takeScreenshot(driver);
-		log.error("prueba");
+		Home home = new Home(driver, driverWait, settings);
 	}
 	
 	/**
