@@ -17,7 +17,7 @@ public class Case_Login extends BaseTest {
 	}
 	
 	/**
-	 * Test de login, camino feliz
+	 * Happy path
 	 */
 	@Test
 	public void login() {
@@ -26,11 +26,12 @@ public class Case_Login extends BaseTest {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
 		log.info("Se finaliza el test de login");
+		@SuppressWarnings("unused")
 		Home home = new Home(driver, driverWait, settings);
 	}
 	
 	/**
-	 * Test de usuario bloqueado
+	 * Locked user test
 	 */
 	@Test
 	public void lockedLogin() {
@@ -43,7 +44,7 @@ public class Case_Login extends BaseTest {
 	}
 	
 	/**
-	 * Test de contraseña incorrecto
+	 * Wrong passwornd test
 	 */
 	@Test
 	public void wrongPassword() {

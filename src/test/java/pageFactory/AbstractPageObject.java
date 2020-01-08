@@ -24,7 +24,7 @@ public class AbstractPageObject {
 	protected Logger log;
 	protected String folder;
 	private boolean screenshot;
-	private static String SCROLL_SCRIPT = "arguments[0].scrollIntoView({block:'center'});"; 
+	private static final String SCROLL_SCRIPT = "arguments[0].scrollIntoView({block:'center'});"; 
 	private Gets gets = new Gets();
 
 

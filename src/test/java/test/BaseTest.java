@@ -10,10 +10,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.apache.log4j.Logger;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.PatternLayout;
-import java.io.IOException;
 
 import utils.SetProperties;
 import utils.Actions;
@@ -29,7 +25,6 @@ public class BaseTest {
 	public static WebDriverWait driverWait;
 	
 	public static Logger log = Logger.getLogger(Logger.class.getName());
-	private static final String LOGFORMAT= "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n";
 	private static Actions action = new Actions();
 	private static Gets get = new Gets();
 	
@@ -37,10 +32,20 @@ public class BaseTest {
 	
 	private static SetProperties properties = new SetProperties();
 	
+	// Private constants
+	
+	private static final String FIREFOX = "Firefox";
+	private static final String URL = "url";
+	private static final String BROWSER = "browser";
+	private static final String SCREENSHOT = "screenshot";
+	private static final String LOG = "log";
+	private static final String FOLDER = "folder";
+	private static final String EVIDENCE = "evidence";
+	
 	public void setup() {
-		String url = properties.getProperty("url");
-		String browser = properties.getProperty("browser");
-		if (browser.equals("Firefox")) {
+		String url = properties.getProperty(URL);
+		String browser = properties.getProperty(BROWSER);
+		if (browser.equals(FIREFOX)) {
 			FirefoxOptions ops = new FirefoxOptions();
 			ops.addArguments("--disable-notifications");
 			driver = new FirefoxDriver(ops);
@@ -61,54 +66,14 @@ public class BaseTest {
 	 * Method to set if you want to take screenshot or not
 	 */
 	private static void settingScreenshot() {
-		String getScreenshot = properties.getProperty("screenshot");
+		String getScreenshot = properties.getProperty(SCREENSHOT);
 		boolean screenshot;
 		if (getScreenshot.equals("true")) {
 			screenshot = true;
 		} else {
 			screenshot = false;
 		}
-		settings.put("screenshot", screenshot);		
-	}
-
-	/**
-	 * Private method to initialize the logger
-	 */
-	private static void create_log(String evidence_path){
-		PatternLayout layout = new PatternLayout();
-		layout.setConversionPattern(LOGFORMAT);
-		create_log_file(layout, evidence_path);
-		create_log_console(layout);
-		settings.put("log", log);
-	}
-	
-	/**
-	 * Method to setup the console log
-	 * @param layout PatternLayout with the format to write in the log
-	 */
-	private static void create_log_console(PatternLayout layout) {
-		ConsoleAppender console_appender;
-		console_appender = new ConsoleAppender(layout);
-		log.addAppender(console_appender);
-	}
-	
-	/**
-	 * Method to create a log file in the evidence folder
-	 * @param layout PatternLayout with the format to write in the log
-	 * @param evidence_path Evidente folder path
-	 */
-	private static void create_log_file(PatternLayout layout, String evidence_path) {
-		String EXTENSION = ".log";
-		String log_name = "logger";
-		String full_name = log_name + EXTENSION;
-		FileAppender file_appender;
-		try {
-			file_appender = new FileAppender(
-					layout, String.format("%s%s", evidence_path, full_name), false);
-			log.addAppender(file_appender);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		settings.put(SCREENSHOT, screenshot);		
 	}
 	
 	/**
@@ -128,14 +93,15 @@ public class BaseTest {
 	public static void create_folder(String folder_name) {
 		String evidence_path = String.format(
 			 "%s%s/%s/%s/", 
-			 properties.getProperty("evidence"),
+			 properties.getProperty(EVIDENCE),
 			 get.get_current_date(),
 			 folder_name,
 			 get.get_current_time()
 		);
 		action.createFolder(evidence_path);
-		create_log(evidence_path);
-		settings.put("folder", evidence_path);
+		log = Actions.create_log(evidence_path);
+		settings.put(FOLDER, evidence_path);
+		settings.put(LOG, log);
 	}
 }
 

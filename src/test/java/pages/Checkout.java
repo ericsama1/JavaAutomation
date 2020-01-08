@@ -33,7 +33,7 @@ public class Checkout extends Header {
 			visibilityOfElementLocated(byContinue));
 	
 	/**
-	 * Method to write a name in the first name's input
+	 * Method to write a name in the first name input
 	 * @param name Name to write in the input
 	 */
 	public void writeFirstName(String name) {
@@ -43,7 +43,7 @@ public class Checkout extends Header {
 	}
 	
 	/**
-	 * Method to write a name in the last name's input
+	 * Method to write a name in the last name input
 	 * @param name Name to write
 	 */
 	public void writeLastName(String name) {
@@ -53,7 +53,7 @@ public class Checkout extends Header {
 	}
 	
 	/**
-	 * Method to write a code in the postal code's input
+	 * Method to write a code in the postal code input
 	 * @param code Code to write in the input
 	 */
 	public void writePostalCode(String code) {

@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageFactory.AbstractPageObject;
 
 
-
 public class Login extends AbstractPageObject {
 
 	public Login(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
@@ -30,8 +29,8 @@ public class Login extends AbstractPageObject {
 			visibilityOfElementLocated(byLoginButton));	
 	
 	/**
-	 * Metodo para escribir el usuario en el input de usuario.
-	 * @param user Nombre del usuario.
+	 * Method to write an user on the user input
+	 * @param user User's name
 	 */
 	public void writeUser(String user) {
 		scroll_to(driver, userInput);
@@ -42,8 +41,8 @@ public class Login extends AbstractPageObject {
 	}
 	
 	/**
-	 * Metodo para escribir la contraseña del usuario.
-	 * @param password Contraseña del usuario.
+	 * Method to write an password on the password input
+	 * @param password User's password
 	 */
 	public void writePassword(String password) {
 		passwordInput.clear();
@@ -53,7 +52,7 @@ public class Login extends AbstractPageObject {
 	}
 	
 	/**
-	 * Metodo para clickear sobre el boton de login.
+	 * Method to click on the login button
 	 */
 	public void clickLogin() {
 		loginButton.click();
@@ -61,9 +60,9 @@ public class Login extends AbstractPageObject {
 	}
 	
 	/**
-	 * Metodo para realizar el proceso de login
-	 * @param user Nombre del usuario.
-	 * @param password Contraseña del usuario.
+	 * Method to do the login
+	 * @param user User's name
+	 * @param password User's password
 	 */
 	public void login(String user, String password) {
 		writeUser(user);
@@ -72,8 +71,8 @@ public class Login extends AbstractPageObject {
 	}
 	
 	/**
-	 * Metodo para comprobar que el texto del mensaje de error es el correcto
-	 * @param exceptedMessage texto esperado
+	 * Method to compare the error text with expected message
+	 * @param exceptedMessage Expected message
 	 */
 	public void checkMessage(String exceptedMessage) {
 		WebElement message = driver.findElement(byMessage);

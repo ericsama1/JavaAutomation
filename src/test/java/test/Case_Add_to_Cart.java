@@ -20,16 +20,19 @@ public class Case_Add_to_Cart extends BaseTest {
 	}
 	
 	/**
-	 * Test para agregar un elemento a carrito
+	 * Test of add an item to the cart 
 	 */
 	@Test
 	public void add_an_item() {
 		create_folder(get_name());
 		login(settings);
 		Home homepage = new Home(driver, driverWait, settings);
-		homepage.add_item_to_cart(1);
+		homepage.add_item_to_cart(0);
 	}
 	
+	/**
+	 * test of add all items to the cart 
+	 */
 	@Test
 	public void add_all_items() {
 		create_folder(get_name());
@@ -38,6 +41,10 @@ public class Case_Add_to_Cart extends BaseTest {
 		homepage.add_all_item_to_cart();
 	}
 	
+	/**
+	 * Method to login on the login page
+	 * @param settings Hashmap with the settings values
+	 */
 	private void login(HashMap<String, Object> settings) {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
