@@ -26,6 +26,7 @@ public class Test_Add_to_Cart extends BaseTest {
 		login();
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.add_item_to_cart(0);
+		assert homepage.getCounter() == 1;
 	}
 	
 	/**
@@ -37,6 +38,7 @@ public class Test_Add_to_Cart extends BaseTest {
 		login();
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.add_all_item_to_cart();
+		assert homepage.getCounter() == homepage.getListSize();
 	}
 	
 	/**
