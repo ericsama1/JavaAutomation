@@ -42,8 +42,20 @@ public class Test_Add_to_Cart extends BaseTest {
 	}
 	
 	/**
+	 * Test of remove an item from the cart from the home page
+	 */
+	@Test
+	public void remove_item() {
+		create_folder(get_name());
+		login(settings);
+		Home homepage = new Home(driver, driverWait, settings);
+		homepage.add_item_to_cart(0);
+		homepage.remove_item(0);
+	}
+	
+	/**
 	 * Method to login on the login page
-	 * @param settings Hashmap with the settings values
+	 * @param settings Hash map with the settings values
 	 */
 	private void login(HashMap<String, Object> settings) {
 		Login loginPage = new Login(driver, driverWait, settings);

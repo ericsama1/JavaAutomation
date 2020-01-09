@@ -3,6 +3,7 @@ package pages;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +22,7 @@ public class Home extends Header{
 	private By bySelectSort = By.className("product_sort_container");
 	private By byProducts = By.className("inventory_item");
 	private By byAddToCart = By.xpath("//button[text()='ADD TO CART']");
+	private By byRemove = By.xpath("//button[text()='REMOVE']");
 	private By byProductName = By.className("inventory_item_name");
 	
 	private WebElement sort = driverWait.until(ExpectedConditions.
@@ -52,6 +54,28 @@ public class Home extends Header{
 			add_item_to_cart(i);
 		}
 		System.out.println(products.size());
+	}
+	
+	/**
+	 * Method to remove an item from the list. This method include an try/catch if the element
+	 * haven't added on the cart
+	 * @param position Position of the element to remove
+	 */
+	public void remove_item(int position) {
+		WebElement product = products.get(position);
+		try {
+			WebElement remove = product.findElement(byRemove);
+			remove.click();
+			log.info(String.format(
+					"Se remueve del carrito, el elemento que se encuentra en la posicion %d",
+					position));
+			takeScreenshot(driver);
+		} catch (NoSuchElementException e) {
+			log.error(e);
+			takeScreenshot(driver);
+			e.printStackTrace();
+		}
+		
 	}
 	
 	/**

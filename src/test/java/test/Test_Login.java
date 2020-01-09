@@ -44,7 +44,7 @@ public class Test_Login extends BaseTest {
 	}
 	
 	/**
-	 * Wrong passwornd test
+	 * Wrong password test
 	 */
 	@Test
 	public void wrongPassword() {
