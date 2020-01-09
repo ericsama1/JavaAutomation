@@ -85,30 +85,57 @@ public class Home extends Header{
 		WebElement product = products.get(position);
 		WebElement name = product.findElement(byProductName);
 		name.click();
+		log.info(String.format("Se hace click sobre el producto en la posicion %d", position));
 	}
 	
+	/**
+	 * Method to change the sort method, by ascendant name. After that, upload the order
+	 * of items list
+	 */
 	public void sort_by_name_ascendant() {
 		selectSort.selectByVisibleText("Name (A to Z)");
 		log.info("Se selecciona la opción 'Name (A to Z')");
 		takeScreenshot(driver);
+		uploadList();
 	}
-	
+
+	/**
+	 * Method to change the sort method, by descendant name. After that, upload the order
+	 * of items list
+	 */
 	public void sort_by_name_descendant() {
 		selectSort.selectByVisibleText("Name (Z to A)");
 		log.info("Se selecciona la opción 'Name (Z to A')");
 		takeScreenshot(driver);
+		uploadList();
 	}
-	
+
+	/**
+	 * Method to change the sort method, by ascendant price. After that, upload the order
+	 * of items list
+	 */
 	public void sort_by_price_ascendant() {
 		selectSort.selectByVisibleText("Price (low to high)");
 		log.info("Se selecciona la opción 'Name (low to high')");
 		takeScreenshot(driver);
+		uploadList();
 	}
-	
+
+	/**
+	 * Method to change the sort method, by ascendant price. After that, upload the order
+	 * of items list
+	 */
 	public void sort_by_price_descendant() {
 		selectSort.selectByVisibleText("Price (high to low)");
 		log.info("Se selecciona la opción 'Name (high to low')");
 		takeScreenshot(driver);
+		uploadList();
 	}
 	
+	/**
+	 * Method to upload the order of the list of items
+	 */
+	private void uploadList() {
+		products = driver.findElements(byProducts);
+	}
 }
