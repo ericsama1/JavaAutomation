@@ -34,7 +34,7 @@ public class SetProperties {
 	/**
 	 * Method to get a specific properties
 	 * @param key Name of the properties to get
-	 * @return Value of the propertie
+	 * @return Value of the property
 	 */
 	public String getProperty(String key) {
 		return (String) props.get(key);
