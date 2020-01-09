@@ -89,18 +89,26 @@ public class Home extends Header{
 	
 	public void sort_by_name_ascendant() {
 		selectSort.selectByVisibleText("Name (A to Z)");
+		log.info("Se selecciona la opción 'Name (A to Z')");
+		takeScreenshot(driver);
 	}
 	
 	public void sort_by_name_descendant() {
 		selectSort.selectByVisibleText("Name (Z to A)");
+		log.info("Se selecciona la opción 'Name (Z to A')");
+		takeScreenshot(driver);
 	}
 	
 	public void sort_by_price_ascendant() {
-		selectSort.selectByVisibleText("Price (low to hight)");
+		selectSort.selectByVisibleText("Price (low to high)");
+		log.info("Se selecciona la opción 'Name (low to high')");
+		takeScreenshot(driver);
 	}
 	
 	public void sort_by_price_descendant() {
-		selectSort.selectByVisibleText("Price (hight to low)");
+		selectSort.selectByVisibleText("Price (high to low)");
+		log.info("Se selecciona la opción 'Name (high to low')");
+		takeScreenshot(driver);
 	}
 	
 }

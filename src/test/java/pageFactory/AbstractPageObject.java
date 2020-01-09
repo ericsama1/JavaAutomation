@@ -65,6 +65,7 @@ public class AbstractPageObject {
 			try {
 				// try to copy the screenshot file to the empty file
 				FileUtils.copyFile(screenfile, destFile);
+				log.info("Se realiza una captura de pantalla");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
