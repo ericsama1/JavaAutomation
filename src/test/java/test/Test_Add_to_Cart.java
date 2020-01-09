@@ -61,7 +61,6 @@ public class Test_Add_to_Cart extends BaseTest {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
 	}
-
 	
 	@SuppressWarnings("deprecation")
 	@After

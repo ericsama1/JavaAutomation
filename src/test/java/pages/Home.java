@@ -75,7 +75,6 @@ public class Home extends Header{
 			takeScreenshot(driver);
 			e.printStackTrace();
 		}
-		
 	}
 	
 	/**

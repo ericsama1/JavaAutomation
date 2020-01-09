@@ -11,6 +11,8 @@ import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.PatternLayout;
 
+import org.openqa.selenium.WebElement;
+
 public class Actions {
 	
 	private static final String LOGFORMAT= "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n";
@@ -66,5 +68,26 @@ public class Actions {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * Method to compare two text
+	 * @param expected_text
+	 * @param text
+	 * @return if the both text are same
+	 */
+	public boolean compare_text(String expected_text, String text) {
+		return expected_text.equals(text);
+	}
+	
+	/**
+	 * Method to compare an element's text with an expected text
+	 * @param expected_text Expected text
+	 * @param element WebElement to get the text to compare
+	 * @return if both text are same
+	 */
+	public boolean compare_text(String expected_text, WebElement element) {
+		String text = element.getText();
+		return compare_text(expected_text, text);
 	}
 }
