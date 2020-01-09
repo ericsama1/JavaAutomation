@@ -138,4 +138,8 @@ public class Home extends Header{
 	private void uploadList() {
 		products = driver.findElements(byProducts);
 	}
+	
+	public int getListSize() {
+		return products.size();
+	}
 }

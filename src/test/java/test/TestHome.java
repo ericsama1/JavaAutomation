@@ -18,6 +18,9 @@ public class TestHome extends BaseTest {
 		super.setup();
 	}
 	
+	/**
+	 * Test of click on an item on the list
+	 */
 	@Test
 	public void clickAProduct() {
 		create_folder(get_name());
@@ -26,6 +29,23 @@ public class TestHome extends BaseTest {
 		homepage.click_product_name(0);
 		@SuppressWarnings("unused")
 		Product prod = new Product(driver, driverWait, settings);
+	}
+	
+	/**
+	 * Test of click on all items on the list
+	 */
+	@Test
+	public void clickAllProducts() {
+		create_folder(get_name());
+		login();
+		Home homepage = new Home(driver, driverWait, settings);
+		int listSize = homepage.getListSize();
+		for (int i = 0; i < listSize; i++) {
+			homepage.click_product_name(i);
+			Product prod = new Product(driver, driverWait, settings);
+			prod.clickBackButton();
+			homepage = new Home(driver, driverWait, settings);
+		}
 	}
 	
 	/**
