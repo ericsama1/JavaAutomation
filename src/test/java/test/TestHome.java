@@ -63,6 +63,4 @@ public class TestHome extends BaseTest {
 		Test_Login.driver.close();
 		Category.shutdown();
 	}
-	
-	
 }
