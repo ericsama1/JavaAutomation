@@ -16,7 +16,7 @@ public class Product extends Header {
 		super(driver, driverWait, settings);
 	}
 	
-	private By byProductName = By.className("inventory_datails_name");
+	private By byProductName = By.className("inventory_details_name");
 	private By byProductDescription = By.className("inventory_details_desc");
 	private By byProductPrice = By.className("inventory_details_price");
 	private By byAddToCart = By.xpath("//button[@class= 'btn_primary btn_inventory']");
