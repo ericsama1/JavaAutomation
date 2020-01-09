@@ -20,6 +20,7 @@ public class Header extends AbstractPageObject{
 	private By byAbout = By.id("about_sidebar_link");
 	private By byLogout = By.id("logout_sidebar_link");
 	private By byReset = By.id("reset_sidebar_link");
+	private By byCounter = By.className("fa-layers-counter shopping_cart_badge");
 	
 	private WebElement menuButton = driver.findElement(byMenuButton);
 	private WebElement cartButton = driver.findElement(byCartButton);
@@ -75,5 +76,10 @@ public class Header extends AbstractPageObject{
 	public void clickReset() {
 		reset.click();
 		log.info("Se hace click sobre el botón de Reset");
+	}
+	
+	public int getCounter() {
+		WebElement counter = driver.findElement(byCounter);
+		return Integer.parseInt(counter.getText());
 	}
 }
