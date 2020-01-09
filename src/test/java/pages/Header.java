@@ -20,7 +20,7 @@ public class Header extends AbstractPageObject{
 	private By byAbout = By.id("about_sidebar_link");
 	private By byLogout = By.id("logout_sidebar_link");
 	private By byReset = By.id("reset_sidebar_link");
-	private By byCounter = By.className("fa-layers-counter shopping_cart_badge");
+	private By byCounter = By.xpath("//span[@class='fa-layers-counter shopping_cart_badge']");
 	
 	private WebElement menuButton = driver.findElement(byMenuButton);
 	private WebElement cartButton = driver.findElement(byCartButton);

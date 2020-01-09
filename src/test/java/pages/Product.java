@@ -19,7 +19,7 @@ public class Product extends Header {
 	private By byProductName = By.className("inventory_details_name");
 	private By byProductDescription = By.className("inventory_details_desc");
 	private By byProductPrice = By.className("inventory_details_price");
-	private By byAddToCart = By.xpath("//button[@class= 'btn_primary btn_inventory']");
+	private By byAddToCart = By.xpath("//button[@class='btn_primary btn_inventory']");
 	private By byBackButton = By.className("inventory_details_back_button");
 	
 	private WebElement productName = driverWait.until(ExpectedConditions
@@ -47,6 +47,7 @@ public class Product extends Header {
 	public void clickAddToCart() {
 		addToCart.click();
 		log.info("Se hace click en el botón Add to Cart");
+		takeScreenshot(driver);
 	}
 	
 	/**
