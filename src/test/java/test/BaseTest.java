@@ -57,8 +57,8 @@ public class BaseTest {
 		}
 		driver.navigate().to(url);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driverWait = new WebDriverWait(driver, 10);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driverWait = new WebDriverWait(driver, 5);
 		settingScreenshot();
 	}
 	
