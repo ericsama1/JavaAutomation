@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.PatternLayout;
-
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 public class Actions {
@@ -76,8 +76,8 @@ public class Actions {
 	 * @param text
 	 * @return if the both text are same
 	 */
-	public boolean compare_text(String expected_text, String text) {
-		return expected_text.equals(text);
+	public void compare_text(String expected_text, String text) {
+		Assert.assertTrue(text.contains(expected_text));
 	}
 	
 	/**
@@ -86,8 +86,8 @@ public class Actions {
 	 * @param element WebElement to get the text to compare
 	 * @return if both text are same
 	 */
-	public boolean compare_text(String expected_text, WebElement element) {
+	public void compare_text(String expected_text, WebElement element) {
 		String text = element.getText();
-		return compare_text(expected_text, text);
+		compare_text(expected_text, text);
 	}
 }
