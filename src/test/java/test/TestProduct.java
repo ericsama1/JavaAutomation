@@ -8,7 +8,7 @@ import data.LoginData;
 
 import pages.Login;
 import pages.Home;
-import pages.Product;
+import pages.ProductPage;
 
 
 public class TestProduct extends BaseTest {
@@ -23,9 +23,9 @@ public class TestProduct extends BaseTest {
 		create_folder(get_name());
 		login();
 		selectFirstProduct();
-		Product product = new Product(driver, driverWait, settings);
-		product.clickAddToCart();
-		assert product.getCounter() == 1;
+		ProductPage productPage = new ProductPage(driver, driverWait, settings);
+		productPage.clickAddToCart();
+		assert productPage.getCounter() == 1;
 	}
 	
 	@Test
@@ -33,9 +33,9 @@ public class TestProduct extends BaseTest {
 		create_folder(get_name());
 		login();
 		selectFirstProduct();
-		Product product = new Product(driver, driverWait, settings);
-		product.clickAddToCart();
-		product.clickRemove();
+		ProductPage productPage = new ProductPage(driver, driverWait, settings);
+		productPage.clickAddToCart();
+		productPage.clickRemove();
 	}
 	
 	/**

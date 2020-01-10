@@ -21,7 +21,7 @@ public class Test_sort_items extends BaseTest {
 	 * Test of sort method, by ascendant price
 	 */
 	@Test
-	public void sortPriceAscendant() {
+	public void home_SortPriceAscendant() {
 		create_folder(get_name());
 		login();
 		Home homepage = new Home(driver, driverWait, settings);
@@ -32,7 +32,7 @@ public class Test_sort_items extends BaseTest {
 	 * Test of sort method, by descendant price
 	 */
 	@Test
-	public void sortPriceDescendant() {
+	public void home_SortPriceDescendant() {
 		create_folder(get_name());
 		login();
 		Home homepage = new Home(driver, driverWait, settings);
@@ -43,7 +43,7 @@ public class Test_sort_items extends BaseTest {
 	 * Test of sort method, by ascendant name
 	 */
 	@Test
-	public void sortNameAscendant() {
+	public void home_SortNameAscendant() {
 		create_folder(get_name());
 		login();
 		Home homepage = new Home(driver, driverWait, settings);
@@ -54,7 +54,7 @@ public class Test_sort_items extends BaseTest {
 	 * Test of sort method, by descendant name
 	 */
 	@Test
-	public void sortNameDescendant() {
+	public void home_SortNameDescendant() {
 		create_folder(get_name());
 		login();
 		Home homepage = new Home(driver, driverWait, settings);

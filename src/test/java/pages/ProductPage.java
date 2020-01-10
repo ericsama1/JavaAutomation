@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.Header;
 
 
-public class Product extends Header {
+public class ProductPage extends Header {
 
-	public Product(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
+	public ProductPage(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
 		super(driver, driverWait, settings);
 	}
 	

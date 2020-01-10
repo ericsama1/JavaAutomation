@@ -20,7 +20,7 @@ public class Test_Login extends BaseTest {
 	 * Happy path
 	 */
 	@Test
-	public void login() {
+	public void login_Login() {
 		create_folder(get_name());
 		log.info("Inicio de prueba de login");
 		Login loginPage = new Login(driver, driverWait, settings);
@@ -34,7 +34,7 @@ public class Test_Login extends BaseTest {
 	 * Locked user test
 	 */
 	@Test
-	public void lockedLogin() {
+	public void login_LockedLogin() {
 		create_folder(get_name());
 		log.info("Inicio de prueba de login de un usuario bloqueado");
 		Login loginPage = new Login(driver, driverWait, settings);
@@ -47,7 +47,7 @@ public class Test_Login extends BaseTest {
 	 * Wrong password test
 	 */
 	@Test
-	public void wrongPassword() {
+	public void login_WrongPassword() {
 		create_folder(get_name());
 		log.info("Inicio de prueba de login con contraseña incorrecta");
 		Login loginPage = new Login(driver, driverWait, settings);

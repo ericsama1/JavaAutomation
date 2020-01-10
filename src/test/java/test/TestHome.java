@@ -8,7 +8,7 @@ import data.LoginData;
 
 import pages.Login;
 import pages.Home;
-import pages.Product;
+import pages.ProductPage;
 
 
 public class TestHome extends BaseTest {
@@ -22,27 +22,27 @@ public class TestHome extends BaseTest {
 	 * Test of click on an item on the list
 	 */
 	@Test
-	public void clickAProduct() {
+	public void home_ClickAProduct() {
 		create_folder(get_name());
 		login();
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.click_product_name(0);
 		@SuppressWarnings("unused")
-		Product prod = new Product(driver, driverWait, settings);
+		ProductPage prod = new ProductPage(driver, driverWait, settings);
 	}
 	
 	/**
 	 * Test of click on all items on the list
 	 */
 	@Test
-	public void clickAllProducts() {
+	public void home_ClickAllProducts() {
 		create_folder(get_name());
 		login();
 		Home homepage = new Home(driver, driverWait, settings);
 		int listSize = homepage.getListSize();
 		for (int i = 0; i < listSize; i++) {
 			homepage.click_product_name(i);
-			Product prod = new Product(driver, driverWait, settings);
+			ProductPage prod = new ProductPage(driver, driverWait, settings);
 			prod.clickBackButton();
 			homepage = new Home(driver, driverWait, settings);
 		}
