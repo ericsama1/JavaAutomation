@@ -53,7 +53,6 @@ public class Home extends Header{
 		for (int i = 0; i < products.size(); i++) {
 			add_item_to_cart(i);
 		}
-		System.out.println(products.size());
 	}
 	
 	/**
