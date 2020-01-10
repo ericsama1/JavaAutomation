@@ -11,7 +11,7 @@ public class Products {
 	
 	public Products() {
 		Product backpack = new Product(
-				"Sauce Labs Blackpack", 
+				"Sauce Labs Backpack", 
 				"carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising "
 				+ "style with unequaled laptop and tablet protection.",
 				"$29.99");
