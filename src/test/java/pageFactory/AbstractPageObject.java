@@ -69,6 +69,7 @@ public class AbstractPageObject {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+			// Java is slow then, you need to wait 1 second (minimum) to process the file 
 			sleep(1);
 		} else {
 			log.warn("No está habilitado la opción de la captura de pantalla");
