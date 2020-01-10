@@ -4,15 +4,21 @@ import org.junit.Test;
 
 import org.apache.log4j.Category;
 import org.junit.After;
+
 import data.LoginData;
+import data.Products;
 
 import pages.Login;
 import pages.Home;
 import pages.ProductPage;
 
+import utils.Actions;
+
 
 public class TestProduct extends BaseTest {
-	LoginData data = new LoginData();
+	private LoginData data = new LoginData();
+	private Actions actions = new Actions();
+	private Products products = new Products();
 	
 	public TestProduct() {
 		super.setup();
@@ -36,6 +42,20 @@ public class TestProduct extends BaseTest {
 		ProductPage productPage = new ProductPage(driver, driverWait, settings);
 		productPage.clickAddToCart();
 		productPage.clickRemove();
+		assert productPage.getCounter() == 0;
+	}
+	
+	@Test
+	public void product_VerifyProductInfo() {
+		create_folder(get_name());
+		login();
+		selectFirstProduct();
+		ProductPage productPage = new ProductPage(driver, driverWait, settings);
+		String name = productPage.get_product_name();
+		String description = productPage.get_product_description();
+		String price = productPage.get_product_price();
+		actions.compare_text(products.getDescription(name), description);
+		actions.compare_text(products.getPrice(name), price);
 	}
 	
 	/**
