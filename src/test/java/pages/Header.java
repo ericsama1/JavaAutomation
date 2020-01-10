@@ -3,6 +3,7 @@ package pages;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -78,8 +79,18 @@ public class Header extends AbstractPageObject{
 		log.info("Se hace click sobre el botón de Reset");
 	}
 	
+	/**
+	 * Method to get cart counter value
+	 * @return Counter value
+	 */
 	public int getCounter() {
-		WebElement counter = driver.findElement(byCounter);
-		return Integer.parseInt(counter.getText());
+		int counter_value;
+		try {
+			WebElement counter = driver.findElement(byCounter);
+			counter_value = Integer.parseInt(counter.getText());
+		} catch (NoSuchElementException e) {
+			counter_value = 0;
+		}
+		return counter_value;
 	}
 }
