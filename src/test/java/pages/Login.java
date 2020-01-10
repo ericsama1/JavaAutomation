@@ -77,8 +77,8 @@ public class Login extends AbstractPageObject {
 	public void checkMessage(String exceptedMessage) {
 		WebElement message = driver.findElement(byMessage);
 		String text = message.getText();
-		assert text.equals(exceptedMessage): String.format("Mensaje esperado: %s, Mensaje obtenido: %s", 
-															exceptedMessage, text);
+		assert text.equals(exceptedMessage): String.format(
+				"Mensaje esperado: %s, Mensaje obtenido: %s", exceptedMessage, text);
 		log.info(String.format("El mensaje de usuario bloqueado es el correcto"));
 		takeScreenshot(driver);
 	}

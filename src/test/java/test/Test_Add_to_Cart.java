@@ -22,8 +22,7 @@ public class Test_Add_to_Cart extends BaseTest {
 	 */
 	@Test
 	public void add_an_item() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.add_item_to_cart(0);
 		assert homepage.getCounter() == 1;
@@ -34,8 +33,7 @@ public class Test_Add_to_Cart extends BaseTest {
 	 */
 	@Test
 	public void add_all_items() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.add_all_item_to_cart();
 		assert homepage.getCounter() == homepage.getListSize();
@@ -46,8 +44,7 @@ public class Test_Add_to_Cart extends BaseTest {
 	 */
 	@Test
 	public void remove_item() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.add_item_to_cart(0);
 		homepage.remove_item(0);
@@ -60,6 +57,15 @@ public class Test_Add_to_Cart extends BaseTest {
 	private void login() {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
+	}
+	
+	/**
+	 * Setup 
+	 * @param name Path of evidence
+	 */
+	private void setUp(String name) {
+		create_folder(name);
+		login();
 	}
 	
 	@SuppressWarnings("deprecation")

@@ -22,8 +22,7 @@ public class Test_sort_items extends BaseTest {
 	 */
 	@Test
 	public void home_SortPriceAscendant() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.sort_by_price_ascendant();
 	}
@@ -33,8 +32,7 @@ public class Test_sort_items extends BaseTest {
 	 */
 	@Test
 	public void home_SortPriceDescendant() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.sort_by_price_descendant();
 	}
@@ -44,8 +42,7 @@ public class Test_sort_items extends BaseTest {
 	 */
 	@Test
 	public void home_SortNameAscendant() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.sort_by_name_ascendant();
 	}
@@ -55,8 +52,7 @@ public class Test_sort_items extends BaseTest {
 	 */
 	@Test
 	public void home_SortNameDescendant() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.sort_by_name_descendant();
 	}
@@ -68,6 +64,15 @@ public class Test_sort_items extends BaseTest {
 	private void login() {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
+	}
+
+	/**
+	 * Setup 
+	 * @param name Path of evidence
+	 */
+	private void setUp(String name) {
+		create_folder(name);
+		login();
 	}
 	
 	@SuppressWarnings("deprecation")

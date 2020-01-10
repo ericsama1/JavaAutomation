@@ -26,9 +26,7 @@ public class TestProduct extends BaseTest {
 	
 	@Test
 	public void product_AddProduct() {
-		create_folder(get_name());
-		login();
-		selectFirstProduct();
+		setUp(get_name());
 		ProductPage productPage = new ProductPage(driver, driverWait, settings);
 		productPage.clickAddToCart();
 		assert productPage.getCounter() == 1;
@@ -36,9 +34,7 @@ public class TestProduct extends BaseTest {
 	
 	@Test
 	public void product_RemoveProduct() {
-		create_folder(get_name());
-		login();
-		selectFirstProduct();
+		setUp(get_name());
 		ProductPage productPage = new ProductPage(driver, driverWait, settings);
 		productPage.clickAddToCart();
 		productPage.clickRemove();
@@ -47,9 +43,7 @@ public class TestProduct extends BaseTest {
 	
 	@Test
 	public void product_VerifyProductInfo() {
-		create_folder(get_name());
-		login();
-		selectFirstProduct();
+		setUp(get_name());
 		ProductPage productPage = new ProductPage(driver, driverWait, settings);
 		String name = productPage.get_product_name();
 		String description = productPage.get_product_description();
@@ -73,6 +67,16 @@ public class TestProduct extends BaseTest {
 	private void login() {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
+	}
+	
+	/**
+	 * Setup 
+	 * @param name Path of evidence
+	 */
+	private void setUp(String name) {
+		create_folder(name);
+		login();
+		selectFirstProduct();
 	}
 	
 	@SuppressWarnings("deprecation")

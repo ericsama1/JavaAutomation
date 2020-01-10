@@ -23,8 +23,7 @@ public class TestHome extends BaseTest {
 	 */
 	@Test
 	public void home_ClickAProduct() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		homepage.click_product_name(0);
 		@SuppressWarnings("unused")
@@ -36,8 +35,7 @@ public class TestHome extends BaseTest {
 	 */
 	@Test
 	public void home_ClickAllProducts() {
-		create_folder(get_name());
-		login();
+		setUp(get_name());
 		Home homepage = new Home(driver, driverWait, settings);
 		int listSize = homepage.getListSize();
 		for (int i = 0; i < listSize; i++) {
@@ -55,6 +53,15 @@ public class TestHome extends BaseTest {
 	private void login() {
 		Login loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
+	}
+
+	/**
+	 * Setup 
+	 * @param name Path of evidence
+	 */
+	private void setUp(String name) {
+		create_folder(name);
+		login();
 	}
 	
 	@SuppressWarnings("deprecation")
