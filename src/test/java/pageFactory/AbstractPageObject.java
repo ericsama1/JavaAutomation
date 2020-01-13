@@ -40,6 +40,10 @@ public class AbstractPageObject {
 	
 	//----------------- TIEMPO DE ESPERA -------------------//
 	
+	/**
+	 * Method to stop the execution for X seconds.
+	 * @param seconds Seconds to stop the execution
+	 */
 	public static void sleep(double seconds) {
 	    try {
 	        Thread.sleep((long) seconds * 1000);
