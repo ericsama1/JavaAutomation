@@ -24,6 +24,7 @@ public class AbstractPageObject {
 	protected Logger log;
 	protected String folder;
 	private boolean screenshot;
+	// JS to scroll to element and set in the center of the screen
 	private static final String SCROLL_SCRIPT = "arguments[0].scrollIntoView({block:'center'});"; 
 	private Gets gets = new Gets();
 
@@ -37,8 +38,6 @@ public class AbstractPageObject {
 		PageFactory.initElements(driver, this);
 		takeScreenshot(driver);
 	}
-	
-	//----------------- TIEMPO DE ESPERA -------------------//
 	
 	/**
 	 * Method to stop the execution for X seconds.
