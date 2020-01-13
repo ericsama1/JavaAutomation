@@ -9,12 +9,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageFactory.AbstractPageObject;
 
+import utils.Actions;
+
 
 public class Login extends AbstractPageObject {
 
 	public Login(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
 		super(driver, driverWait, settings);
 	}
+	
+	private Actions actions = new Actions();
 	
 	private By byUserInput = By.id("user-name");
 	private By byPasswordInput = By.id("password");
@@ -77,8 +81,7 @@ public class Login extends AbstractPageObject {
 	public void checkMessage(String exceptedMessage) {
 		WebElement message = driver.findElement(byMessage);
 		String text = message.getText();
-		assert text.equals(exceptedMessage): String.format(
-				"Mensaje esperado: %s, Mensaje obtenido: %s", exceptedMessage, text);
+		actions.compare_text(exceptedMessage, text, log);
 		log.info(String.format("El mensaje de usuario bloqueado es el correcto"));
 		takeScreenshot(driver);
 	}

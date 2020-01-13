@@ -48,8 +48,8 @@ public class TestProduct extends BaseTest {
 		String name = productPage.get_product_name();
 		String description = productPage.get_product_description();
 		String price = productPage.get_product_price();
-		actions.compare_text(products.getDescription(name), description);
-		actions.compare_text(products.getPrice(name), price);
+		actions.compare_text(products.getDescription(name), description, log);
+		actions.compare_text(products.getPrice(name), price, log);
 	}
 	
 	/**

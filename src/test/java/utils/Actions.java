@@ -13,6 +13,7 @@ import org.apache.log4j.PatternLayout;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
+
 public class Actions {
 	
 	private static final String LOGFORMAT= "%d{yyyy-MM-dd HH:mm:ss} %-5p %-20C{1}:%L - %m%n";
@@ -76,8 +77,14 @@ public class Actions {
 	 * @param text
 	 * @return if the both text are same
 	 */
-	public void compare_text(String expected_text, String text) {
-		Assert.assertTrue(text.contains(expected_text));
+	public void compare_text(String expected_text, String text, Logger log) {
+		try {
+			Assert.assertTrue(text.contains(expected_text));
+			log.info("El texto esperado y el texto mostrados, son iguales");
+		} catch (AssertionError e) {
+			log.error(String.format("Texto esperado: %s, Texto mostrado: %s", expected_text, text));
+			Assert.fail(e.toString());
+		}
 	}
 	
 	/**
@@ -86,8 +93,8 @@ public class Actions {
 	 * @param element WebElement to get the text to compare
 	 * @return if both text are same
 	 */
-	public void compare_text(String expected_text, WebElement element) {
+	public void compare_text(String expected_text, WebElement element, Logger log) {
 		String text = element.getText();
-		compare_text(expected_text, text);
+		compare_text(expected_text, text, log);
 	}
 }
