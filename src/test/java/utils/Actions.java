@@ -25,21 +25,30 @@ public class Actions {
 	 * @param path String of the folder to create
 	 */
 	public void createFolder(String path) {
+		// Set the evidence path
 		Path evidence_path = Paths.get(path);
+		// If the folder don't exist, then make the folder
 		if (!Files.exists(evidence_path)) {
 			File file = new File(path);
+			// Make the folder
 			file.mkdir();
 		}
 	}
 	
 	/**
 	 * Private method to initialize the logger
+	 * @return Return the created log file
 	 */
 	public static Logger create_log(String evidence_path){
+		// Create logger variable
 		Logger log = Logger.getLogger(Logger.class.getName());
+		// Create a layout 
 		PatternLayout layout = new PatternLayout();
+		// Set the layout format
 		layout.setConversionPattern(LOGFORMAT);
+		// Create log file on the evidence path
 		create_log_file(log, layout, evidence_path);
+		// Show the log on the console
 		create_log_console(log, layout);
 		return log;
 	}
@@ -79,9 +88,12 @@ public class Actions {
 	 */
 	public void compare_text(String expected_text, String text, Logger log) {
 		try {
+			// Compare if the text contains expected text
 			Assert.assertTrue(text.contains(expected_text));
 			log.info("El texto esperado y el texto mostrados, son iguales");
 		} catch (AssertionError e) {
+			// If the text don't contains the expected text, then write on the log an error,
+			// and test fail
 			log.error(String.format("Texto esperado: %s, Texto mostrado: %s", expected_text, text));
 			Assert.fail(e.toString());
 		}
