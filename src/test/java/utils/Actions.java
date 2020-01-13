@@ -15,7 +15,7 @@ import org.openqa.selenium.WebElement;
 
 public class Actions {
 	
-	private static final String LOGFORMAT= "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n";
+	private static final String LOGFORMAT= "%d{yyyy-MM-dd HH:mm:ss} %-5p %-20C{1}:%L - %m%n";
 	private static final String EXTENSION = ".log";
 	private static final String LOGNAME = "logger";
 
