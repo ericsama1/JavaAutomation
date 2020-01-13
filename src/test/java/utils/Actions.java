@@ -81,10 +81,9 @@ public class Actions {
 	}
 	
 	/**
-	 * Method to compare two text
+	 * Method to compare two text. If the text contains expected text
 	 * @param expected_text
 	 * @param text
-	 * @return if the both text are same
 	 */
 	public void compare_text(String expected_text, String text, Logger log) {
 		try {
@@ -100,10 +99,9 @@ public class Actions {
 	}
 	
 	/**
-	 * Method to compare an element's text with an expected text
+	 * Method to compare an element's text contains the expected text
 	 * @param expected_text Expected text
 	 * @param element WebElement to get the text to compare
-	 * @return if both text are same
 	 */
 	public void compare_text(String expected_text, WebElement element, Logger log) {
 		String text = element.getText();
