@@ -3,6 +3,7 @@ package pages;
 import java.util.HashMap;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,13 +22,11 @@ public class Cart extends Header{
 	private By byItemQuantity = By.className("cart_quantity");
 	private By byItemName = By.className("inventory_item_name");
 	private By byItemDescription = By.className("inventory_item_desc");
-	private By byItemRemove = By.className("btn_secondary cart_button");
+	private By byItemRemove = By.xpath("//button[@class='btn_secondary cart_button']");
 	private By byItemLink = By.xpath("//a");
 	private By byContinueButton = By.xpath("//a[@class='btn_secondary']");
 	private By byCheckout = By.xpath("//a[contains(@class,'checkout_button')]");
 	
-	private List<WebElement> items = driverWait.until(ExpectedConditions
-			.visibilityOfAllElementsLocatedBy(byCartItem));
 	private WebElement continueShopping = driverWait.until(ExpectedConditions
 			.visibilityOfElementLocated(byContinueButton));
 	private WebElement checkoutButton = driverWait.until(ExpectedConditions
@@ -39,6 +38,7 @@ public class Cart extends Header{
 	 * @param position Position of the element to remove
 	 */
 	public void removeItem(int position) {
+		List<WebElement> items = driver.findElements(byCartItem);
 		WebElement element = items.get(position);
 		String name = element.findElement(byItemName).getText();
 		WebElement remove = element.findElement(byItemRemove);
@@ -46,8 +46,20 @@ public class Cart extends Header{
 		log.info(String.format("Se quita el elemento %s de la lista", name));
 		// Take a screenshot after remove an item from the list
 		takeScreenshot(driver);
-		// Update the list of the element after remove an element
-		items = driver.findElements(byCartItem);
+	}
+	
+	/**
+	 * Method to remove all items from the cart
+	 */
+	public void removeAllItems() {
+		List<WebElement> items = driver.findElements(byCartItem);
+		for (WebElement element: items) {
+			WebElement remove = element.findElement(byItemRemove);
+			String name = element.findElement(byItemName).getText();
+			remove.click();
+			log.info(String.format("Se quita el elemento %s de la lista", name));
+			takeScreenshot(driver);
+		}
 	}
 	
 	/**
@@ -55,6 +67,7 @@ public class Cart extends Header{
 	 * @param position Position of the element to click
 	 */
 	public void clickItem(int position) {
+		List<WebElement> items = driver.findElements(byCartItem);
 		WebElement element = items.get(position);
 		String name = element.findElement(byItemName).getText();
 		WebElement link = element.findElement(byItemLink);
@@ -86,6 +99,7 @@ public class Cart extends Header{
 	 * @return Quantity of the searched element
 	 */
 	public String getQuantity(int position) {
+		List<WebElement> items = driver.findElements(byCartItem);
 		WebElement element = items.get(position);
 		return element.findElement(byItemQuantity).getText();
 	}
@@ -96,6 +110,7 @@ public class Cart extends Header{
 	 * @return Description of the item
 	 */
 	public String getDesciption(int position) {
+		List<WebElement> items = driver.findElements(byCartItem);
 		WebElement element = items.get(position);
 		return element.findElement(byItemDescription).getText();
 	}
@@ -105,6 +120,11 @@ public class Cart extends Header{
 	 * @return list size
 	 */
 	public int getListQuantity() {
-		return items.size();
+		try {
+			List<WebElement> items = driver.findElements(byCartItem);
+			return items.size();
+		} catch (NoSuchElementException e) {
+			return 0;
+		}
 	}
 }

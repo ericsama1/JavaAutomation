@@ -13,6 +13,7 @@ import pages.ProductPage;
 
 public class TestHome extends BaseTest {
 	LoginData data = new LoginData();
+	private Home home;
 	
 	public TestHome() {
 		super.setup();
@@ -24,8 +25,7 @@ public class TestHome extends BaseTest {
 	@Test
 	public void home_ClickAProduct() {
 		setUp(get_name());
-		Home homepage = new Home(driver, driverWait, settings);
-		homepage.click_product_name(0);
+		home.click_product_name(0);
 		@SuppressWarnings("unused")
 		ProductPage prod = new ProductPage(driver, driverWait, settings);
 	}
@@ -36,13 +36,12 @@ public class TestHome extends BaseTest {
 	@Test
 	public void home_ClickAllProducts() {
 		setUp(get_name());
-		Home homepage = new Home(driver, driverWait, settings);
-		int listSize = homepage.getListSize();
+		int listSize = home.getListSize();
 		for (int i = 0; i < listSize; i++) {
-			homepage.click_product_name(i);
+			home.click_product_name(i);
 			ProductPage prod = new ProductPage(driver, driverWait, settings);
 			prod.clickBackButton();
-			homepage = new Home(driver, driverWait, settings);
+			home = new Home(driver, driverWait, settings);
 		}
 	}
 	
@@ -62,6 +61,7 @@ public class TestHome extends BaseTest {
 	private void setUp(String name) {
 		create_folder(name);
 		login();
+		home = new Home(driver, driverWait, settings);
 	}
 	
 	@SuppressWarnings("deprecation")
