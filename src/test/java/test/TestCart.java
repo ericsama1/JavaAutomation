@@ -16,9 +16,32 @@ import pages.Cart;
 public class TestCart extends BaseTest {
 	private LoginData data = new LoginData();
 	private Cart cart; 
+	private Home home;
 	
 	public TestCart() {
 		super.setup();
+	}
+	
+	/**
+	 * Test to show the list from the cart page
+	 */
+	@Test
+	public void cart_ProductsList() {
+		setUp(get_name());
+		addAllProducts();
+	}
+	
+	/**
+	 * Test to show the cart page when we don't add any product to 
+	 * the cart
+	 */
+	@Test
+	public void cart_EmptyCart() {
+		setUp(get_name());
+		home = new Home(driver, driverWait, settings);
+		home.clickCart();
+		@SuppressWarnings("unused")
+		Cart cart = new Cart(driver, driverWait, settings);
 	}
 	
 	/**
@@ -33,8 +56,8 @@ public class TestCart extends BaseTest {
 	}
 	
 	/**
-	 * Test to add all product to the cart, after that remove from the cart's
-	 * items list
+	 * Test to add all product to the cart, after that remove 
+	 * from the cart's items list
 	 */
 	@Test
 	public void cart_RemoveAllProducts() {
@@ -42,6 +65,19 @@ public class TestCart extends BaseTest {
 		addAllProducts();
 		cart.removeAllItems();
 		Assert.assertTrue(cart.getListQuantity() == 0);
+	}
+	
+	/**
+	 * Test to check the continue shopping button behavior
+	 */
+	@Test
+	public void cart_ContinueButton() {
+		setUp(get_name());
+		Home home = new Home(driver, driverWait, settings);
+		home.clickCart();
+		cart = new Cart(driver, driverWait, settings);
+		cart.clickContinue();
+		home = new Home(driver, driverWait, settings);
 	}
 	
 	/**
@@ -63,6 +99,10 @@ public class TestCart extends BaseTest {
 		cart = new Cart(driver, driverWait, settings);
 	}
 	
+	/**
+	 * Method to add all product to the cart, from the home
+	 * page
+	 */
 	private void addAllProducts() {
 		Home home = new Home(driver, driverWait, settings);
 		home.add_all_item_to_cart();

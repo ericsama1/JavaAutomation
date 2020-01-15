@@ -14,7 +14,8 @@ import pages.Header;
 
 public class Cart extends Header{
 
-	public Cart(WebDriver driver, WebDriverWait driverWait, HashMap<String, Object> settings) {
+	public Cart(WebDriver driver, WebDriverWait driverWait, 
+			    HashMap<String, Object> settings) {
 		super(driver, driverWait, settings);
 	}
 	
@@ -22,7 +23,8 @@ public class Cart extends Header{
 	private By byItemQuantity = By.className("cart_quantity");
 	private By byItemName = By.className("inventory_item_name");
 	private By byItemDescription = By.className("inventory_item_desc");
-	private By byItemRemove = By.xpath("//button[@class='btn_secondary cart_button']");
+	private By byItemRemove = By.xpath(
+			"//button[@class='btn_secondary cart_button']");
 	private By byItemLink = By.xpath("//a");
 	private By byContinueButton = By.xpath("//a[@class='btn_secondary']");
 	private By byCheckout = By.xpath("//a[contains(@class,'checkout_button')]");
