@@ -4,19 +4,12 @@ import org.junit.Test;
 import org.apache.log4j.Category;
 import org.junit.After;
 
-import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
-
 import data.LoginData;
 
 import pages.Login;
 import pages.Home;
 
 
-@Epic("Epica")
-@Feature("Feacture")
 public class Test_Login extends BaseTest {
 	LoginData data = new LoginData();
 	
@@ -28,8 +21,6 @@ public class Test_Login extends BaseTest {
 	 * Happy path
 	 */ 
 	@Test
-	@Story("story")
-	@Description("prueba_login")
 	public void login_Login() {
 		setUp(get_name());
 		log.info("Inicio de prueba de login");
@@ -44,8 +35,6 @@ public class Test_Login extends BaseTest {
 	 * Locked user test
 	 */
 	@Test
-	@Story("story")
-	@Description("prueba_locked")
 	public void login_LockedLogin() {
 		setUp(get_name());
 		log.info("Inicio de prueba de login de un usuario bloqueado");
@@ -59,8 +48,6 @@ public class Test_Login extends BaseTest {
 	 * Wrong password test
 	 */
 	@Test
-	@Story("story")
-	@Description("prueba_wrong")
 	public void login_WrongPassword() {
 		setUp(get_name());
 		log.info("Inicio de prueba de login con contraseña incorrecta");
