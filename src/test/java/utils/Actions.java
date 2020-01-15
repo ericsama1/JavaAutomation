@@ -77,6 +77,7 @@ public class Actions {
 			log.addAppender(file_appender);
 		} catch (IOException e) {
 			e.printStackTrace();
+			Assert.fail(e.toString());
 		}
 	}
 	
