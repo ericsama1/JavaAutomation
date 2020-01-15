@@ -10,9 +10,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.List;
 
+import utils.Actions;
+import data.Products;
+
 import pages.Header;
 
 public class Cart extends Header{
+	private Actions actions = new Actions();
+	private Products products = new Products();
 
 	public Cart(WebDriver driver, WebDriverWait driverWait, 
 			    HashMap<String, Object> settings) {
@@ -23,6 +28,7 @@ public class Cart extends Header{
 	private By byItemQuantity = By.className("cart_quantity");
 	private By byItemName = By.className("inventory_item_name");
 	private By byItemDescription = By.className("inventory_item_desc");
+	private By byItemPrice = By.className("inventory_item_price");
 	private By byItemRemove = By.xpath(
 			"//button[@class='btn_secondary cart_button']");
 	private By byItemLink = By.xpath("//a");
@@ -93,7 +99,33 @@ public class Cart extends Header{
 		log.info("Se hace click sobre el botón 'Checkout'");
 	}
 	
+	public void checkProduct() {
+		List<WebElement> items = driver.findElements(byCartItem);
+		// Check product description and price per product
+		for (WebElement element: items) {
+			// Get product info
+			String name = element.findElement(byItemName).getText();
+			String description = element.findElement(byItemDescription)
+					.getText();
+			String price = element.findElement(byItemPrice).getText();
+			// Compare product info with setted product
+			actions.compare_text(products.getDescription(name), description, log);
+			actions.compare_text(products.getPrice(name).replace("$", ""), price, log);
+		}
+	}
+	
 	// Gets
+
+	/**
+	 * Method to get the name of an item from the cart
+	 * @param position Position of the element to get the name
+	 * @return Name of the searched element
+	 */
+	public String getName(int position) {
+		List<WebElement> items = driver.findElements(byCartItem);
+		WebElement element = items.get(position);
+		return element.findElement(byItemName).getText();
+	}
 	
 	/**
 	 * Method to get the quantity of an item from the cart

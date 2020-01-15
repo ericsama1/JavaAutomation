@@ -79,6 +79,14 @@ public class TestCart extends BaseTest {
 		home = new Home(driver, driverWait, settings);
 	}
 	
+	@Test
+	public void cart_CheckProductInfo() {
+		setUp(get_name());
+		addAllProducts();
+		cart = new Cart(driver, driverWait, settings);
+		cart.checkProduct();
+	}
+	
 	/**
 	 * Method to login on the login page
 	 * @param settings Hash map with the settings values
