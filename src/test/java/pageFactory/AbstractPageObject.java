@@ -25,7 +25,8 @@ public class AbstractPageObject {
 	protected String folder;
 	private boolean screenshot;
 	// JS to scroll to element and set in the center of the screen
-	private static final String SCROLL_SCRIPT = "arguments[0].scrollIntoView({block:'center'});"; 
+	private static final String SCROLL_SCRIPT = 
+			"arguments[0].scrollIntoView({block:'center'});"; 
 	private Gets gets = new Gets();
 
 

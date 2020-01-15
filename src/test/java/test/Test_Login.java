@@ -12,6 +12,7 @@ import pages.Home;
 
 public class Test_Login extends BaseTest {
 	LoginData data = new LoginData();
+	private Login loginPage;
 	
 	public Test_Login() {
 		super.setup();
@@ -24,7 +25,7 @@ public class Test_Login extends BaseTest {
 	public void login_Login() {
 		setUp(get_name());
 		log.info("Inicio de prueba de login");
-		Login loginPage = new Login(driver, driverWait, settings);
+		loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_user(), data.get_password());
 		log.info("Se finaliza el test de login");
 		@SuppressWarnings("unused")
@@ -38,7 +39,7 @@ public class Test_Login extends BaseTest {
 	public void login_LockedLogin() {
 		setUp(get_name());
 		log.info("Inicio de prueba de login de un usuario bloqueado");
-		Login loginPage = new Login(driver, driverWait, settings);
+		loginPage = new Login(driver, driverWait, settings);
 		loginPage.login(data.get_lockedUser(), data.get_password());
 		loginPage.checkMessage(data.get_lockedMessage());
 		log.info("Se finaliza el test de usuario bloqueado");

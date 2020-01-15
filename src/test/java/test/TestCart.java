@@ -40,8 +40,7 @@ public class TestCart extends BaseTest {
 		setUp(get_name());
 		home = new Home(driver, driverWait, settings);
 		home.clickCart();
-		@SuppressWarnings("unused")
-		Cart cart = new Cart(driver, driverWait, settings);
+		cart = new Cart(driver, driverWait, settings);
 	}
 	
 	/**
@@ -73,7 +72,7 @@ public class TestCart extends BaseTest {
 	@Test
 	public void cart_ContinueButton() {
 		setUp(get_name());
-		Home home = new Home(driver, driverWait, settings);
+		home = new Home(driver, driverWait, settings);
 		home.clickCart();
 		cart = new Cart(driver, driverWait, settings);
 		cart.clickContinue();
@@ -93,9 +92,9 @@ public class TestCart extends BaseTest {
 	 * Method to add a product to the cart, from the home page
 	 */
 	private void addAProduct() {
-		Home homepage = new Home(driver, driverWait, settings);
-		homepage.add_item_to_cart(0);
-		homepage.clickCart();
+		home = new Home(driver, driverWait, settings);
+		home.add_item_to_cart(0);
+		home.clickCart();
 		cart = new Cart(driver, driverWait, settings);
 	}
 	
@@ -104,7 +103,7 @@ public class TestCart extends BaseTest {
 	 * page
 	 */
 	private void addAllProducts() {
-		Home home = new Home(driver, driverWait, settings);
+		home = new Home(driver, driverWait, settings);
 		home.add_all_item_to_cart();
 		home.clickCart();
 		cart = new Cart(driver, driverWait, settings);
