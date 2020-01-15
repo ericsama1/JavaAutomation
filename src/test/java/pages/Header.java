@@ -42,7 +42,7 @@ public class Header extends AbstractPageObject{
 	/**
 	 * Method to do a click on the car button
 	 */
-	public void clickCat() {
+	public void clickCart() {
 		cartButton.click();
 		log.info("Se hace click sobre el botón del carrito");
 	}
